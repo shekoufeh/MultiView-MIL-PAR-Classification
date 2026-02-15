@@ -15,7 +15,7 @@ import pandas as pd
 from PIL import Image
 import torch.nn as nn
 import torch.optim as optim
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from torchvision import transforms
 import torch.optim.lr_scheduler as lr_scheduler
 from torchvision.transforms import functional as F
@@ -280,20 +280,20 @@ def plot_roc_curve_multiclass(all_labels, all_probs, num_classes, save_path):
     if num_classes == 2:
         fpr, tpr, _ = roc_curve(all_labels, all_probs[:, 1])
         roc_auc = auc(fpr, tpr)
-        plt.figure(figsize=(6, 6))
-        plt.plot(fpr, tpr, color='blue', lw=2, label=f'AUC = {roc_auc:.2f}')
-        plt.plot([0, 1], [0, 1], linestyle='--', color='gray')
-        plt.xlabel('False Positive Rate')
-        plt.ylabel('True Positive Rate')
-        plt.title(f'ROC Curve ({fusion_mode.upper()})')
-        plt.legend()
-        plt.grid(True)
+        #plt.figure(figsize=(6, 6))
+        #plt.plot(fpr, tpr, color='blue', lw=2, label=f'AUC = {roc_auc:.2f}')
+        #plt.plot([0, 1], [0, 1], linestyle='--', color='gray')
+        #plt.xlabel('False Positive Rate')
+        #plt.ylabel('True Positive Rate')
+        #plt.title(f'ROC Curve ({fusion_mode.upper()})')
+        #plt.legend()
+        #plt.grid(True)
     else:
         # Multi-class implementation placeholder
         pass
 
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
-    plt.close()
+    #plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    #plt.close()
     
 def pad_to_square(image, fill=0):
     w, h = image.size

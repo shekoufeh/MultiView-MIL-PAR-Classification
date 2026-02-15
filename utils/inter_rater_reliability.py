@@ -2,12 +2,10 @@
 # -*- coding: utf-8 -*-
 
 
-
 import os
 import sys
 import numpy as np
 import pandas as pd
-import pingouin as pg
 import matplotlib.pyplot as plt
 from scipy.stats import pearsonr
 from sklearn.metrics import f1_score, cohen_kappa_score, confusion_matrix, classification_report
@@ -16,17 +14,16 @@ from sklearn.metrics import f1_score, cohen_kappa_score, confusion_matrix, class
 
 # 1. PRIMARY DATA (For Main Comparison)
 # RATER_A_FILE is the RETEST file (used for comparison against B)
-RATER_A_FILE = "./dataset/rater_A.csv"  # <--- Rater A (Retest)
-RATER_B_FILE = "./dataset/rater_B.csv"  # <--- Rater B
+RATER_A_FILE = "./../data/rater_A.csv"  # <--- Rater A (Retest)
+RATER_B_FILE = "./../data/rater_B.csv"  # <--- Rater Bs
 
 # 2. RELIABILITY DATA (For Test-Retest Check)
 # This is the Original file (used only to check self-consistency against Retest)
-RATER_A_ORIGINAL_FILE = "./dataset/final_test_DrBecker_Oldsource.csv" 
 
 PAR_THRESHOLD = 10
 PAR_COLUMN = 'PAR' 
 KEY_COLUMNS = ['patient', 'visit']
-OUTPUT_FILE_FULL = "./dataset/inter_rater_Retest_vs_B.csv"
+OUTPUT_FILE_FULL = "./../data/inter_rater_Retest_vs_B.csv"
 
 def map_par_to_binary(par_value, threshold):
     """Maps PAR value to binary class (0 or 1)."""
@@ -111,12 +108,6 @@ icc_data = merged_main[['PAR_ARet', 'PAR_B']].copy()
 icc_data['Subject'] = merged_main.index
 icc_long = pd.melt(icc_data, id_vars=['Subject'], value_vars=['PAR_ARet', 'PAR_B'], var_name='Rater', value_name='Score')
 
-try:
-    icc_res = pg.intraclass_corr(data=icc_long, targets='Subject', raters='Rater', ratings='Score')
-    icc_val = icc_res[icc_res['Type'] == 'ICC2']['ICC'].values[0]
-    print(f"\nICC(2,1):           {icc_val:.4f}")
-except:
-    print("ICC Calculation Failed")
 
 # Save Main Comparison
 merged_main.to_csv(OUTPUT_FILE_FULL, index=False)
@@ -136,5 +127,5 @@ plt.ylabel("Rater B")
 plt.title("Main: Rater A (Retest) vs Rater B")
 plt.legend()
 plt.grid(True)
-plt.savefig("./dataset/scatter_main_retest_vs_B.png")
+plt.savefig("./../data/scatter_main_retest_vs_B.png")
 print("\nProcessing Complete.")

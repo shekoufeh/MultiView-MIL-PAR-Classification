@@ -4,7 +4,7 @@
 import os
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from sklearn.metrics import (
     confusion_matrix, 
     f1_score, 
@@ -22,8 +22,8 @@ from sklearn.utils import resample
 base_dir = "./../weights/"
 
 filename = "final_detailed_predictions.csv"
-OUTPUT_PREDICTIONS_FILE = "./../data/ai_ensemble_predictions.csv" # New output file
-RATER_A_ORIGINAL_FILE = "./../data/rater_A.csv" 
+OUTPUT_PREDICTIONS_FILE = "./dataset/ai_ensemble_predictions.csv" # New output file
+RATER_A_ORIGINAL_FILE = "./dataset/rater_A.csv" 
 par_threshold = 10
 weights_folder = "MIL_crop_fold{}_0.05_binary_vit_small_patch14_dinov2.lvd142m_K2_LabelSmoothing_0.001_b32_sched"
 # weights_folder = "MIL_crop_par"+str(par_threshold)+"_fold{}_0.05_binary_vit_small_patch14_dinov2.lvd142m_K2_LabelSmoothing_0.001_b32_sched"
@@ -114,39 +114,39 @@ print("-" * 20)
 print(classification_report(y_true, y_pred, digits=4))
 # -------------------------------------
 # --- 5. Plot ROC Curves ---
-plt.figure(figsize=(10, 8))
+# plt.figure(figsize=(10, 8))
 
 # Plot Individual Folds
 for i, df in enumerate(all_folds_dfs):
     fold_num = df['fold'].iloc[0]
     fpr_fold, tpr_fold, _ = roc_curve(df['true_label'], df['prob_class_1'])
     roc_auc_fold = auc(fpr_fold, tpr_fold)
-    plt.plot(fpr_fold, tpr_fold, color='gray', linestyle='--', alpha=0.35, label=f'Fold {fold_num}')
+    # plt.plot(fpr_fold, tpr_fold, color='gray', linestyle='--', alpha=0.35, label=f'Fold {fold_num}')
 
 # Plot Ensemble
 fpr_ens, tpr_ens, _ = roc_curve(y_true, y_prob)
 roc_auc_ens = auc(fpr_ens, tpr_ens)
 
-plt.plot(fpr_ens, tpr_ens, color='red', linestyle='-', alpha=1.0, linewidth=3.0, 
-             label=f'Ensemble (AUC = {roc_auc_ens:.3f})')
+# plt.plot(fpr_ens, tpr_ens, color='red', linestyle='-', alpha=1.0, linewidth=3.0, 
+#              label=f'Ensemble (AUC = {roc_auc_ens:.3f})')
 
-plt.plot([0, 1], [0, 1], color='navy', linestyle=':')
-plt.xlim([0.0, 1.0])
-plt.ylim([0.0, 1.05])
+# plt.plot([0, 1], [0, 1], color='navy', linestyle=':')
+# plt.xlim([0.0, 1.0])
+# plt.ylim([0.0, 1.05])
 
-# --- UPDATED TEXT SIZES ---
-plt.xlabel('False Positive Rate', fontsize=14)
-plt.ylabel('True Positive Rate', fontsize=14)
-plt.title(f'ROC Curve\nKappa: {kappa:.3f} [{lower_ci:.3f}-{upper_ci:.3f}]', fontsize=18, fontweight='bold')
-plt.legend(loc="lower right", fontsize=12)
+# # --- UPDATED TEXT SIZES ---
+# plt.xlabel('False Positive Rate', fontsize=14)
+# plt.ylabel('True Positive Rate', fontsize=14)
+# plt.title(f'ROC Curve\nKappa: {kappa:.3f} [{lower_ci:.3f}-{upper_ci:.3f}]', fontsize=18, fontweight='bold')
+# plt.legend(loc="lower right", fontsize=12)
 
-# Increase size of axis tick marks (numbers)
-plt.tick_params(axis='both', which='major', labelsize=15)
+# # Increase size of axis tick marks (numbers)
+# plt.tick_params(axis='both', which='major', labelsize=15)
 
-plt.grid(alpha=0.3)
-plt.tight_layout()
-plt.savefig('ensemble_kappa_ci_roc.png', dpi=300)
-print("\nPlot saved to 'ensemble_kappa_ci_roc.png'")
+# plt.grid(alpha=0.3)
+# plt.tight_layout()
+# plt.savefig('ensemble_kappa_ci_roc.png', dpi=300)
+# print("\nPlot saved to 'ensemble_kappa_ci_roc.png'")
 
 # plt.show() # Disabled plt.show() for standard script execution
 

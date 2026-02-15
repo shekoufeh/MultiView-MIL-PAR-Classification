@@ -32,11 +32,11 @@ conda activate dinov3_ortho
 ### 2. Preprocessing: Intelligent-Cropping and Montage Generation
 You can standardize your raw dental images into a single 2x3 layout for Input Fusion strategy using the scripts in "utils":
 ```bash
-python multiview_grid_gen.py --input ./data/all --output ./data/montages
+python multiview_grid_gen.py --input ./../data/all --output ./../data/montages
 ```
 To apply adaptive cropping to focus on the dental region:
 ```bash
-python intelligent_cropping.py  --repo_dir ./path/to/dinov3_repo  --weights ./weights/dinov3_vitb16.pth --input_dir ./data/all --output_dir ./data/smart_crop
+python intelligent_cropping.py  --repo_dir ./path/to/dinov3_repo  --weights ./weights/dinov3_vitb16.pth --input_dir ./../data/all --output_dir ./../data/smart_crop
 ```
 Ensure your filenames follow the convention {PatientID}_{View}.png e.g. <XXXX>_right.png, <XXXX>_left.png, <XXXX>_center.png, <XXXX>_up.png, and <XXXX>_down.png.
 

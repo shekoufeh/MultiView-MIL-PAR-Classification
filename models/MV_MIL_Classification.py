@@ -12,7 +12,7 @@ import pandas as pd
 from PIL import Image
 import torch.nn as nn
 import torch.optim as optim
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from torchvision import transforms
 import torch.optim.lr_scheduler as lr_scheduler
 from torchvision.transforms import functional as F
@@ -225,14 +225,14 @@ def plot_roc_curve_multiclass(all_labels, all_probs, num_classes, save_path):
         fpr, tpr, _ = roc_curve(all_labels, all_probs[:, 1])
         roc_auc = auc(fpr, tpr)
 
-        plt.figure(figsize=(6, 6))
-        plt.plot(fpr, tpr, color='blue', lw=2, label=f'AUC = {roc_auc:.2f}')
-        plt.plot([0, 1], [0, 1], linestyle='--', color='gray')
-        plt.xlabel('False Positive Rate')
-        plt.ylabel('True Positive Rate')
-        plt.title('ROC Curve (Binary)')
-        plt.legend()
-        plt.grid(True)
+        #plt.figure(figsize=(6, 6))
+        #plt.plot(fpr, tpr, color='blue', lw=2, label=f'AUC = {roc_auc:.2f}')
+        #plt.plot([0, 1], [0, 1], linestyle='--', color='gray')
+        #plt.xlabel('False Positive Rate')
+        #plt.ylabel('True Positive Rate')
+        #plt.title('ROC Curve (Binary)')
+        #plt.legend()
+        #plt.grid(True)
         
     # --- Multi-class Case ---
     else:
@@ -240,25 +240,25 @@ def plot_roc_curve_multiclass(all_labels, all_probs, num_classes, save_path):
         y_true = label_binarize(all_labels, classes=list(range(num_classes)))
         y_score = all_probs
 
-        plt.figure(figsize=(8, 6))
+        #plt.figure(figsize=(8, 6))
         for i in range(num_classes):
             fpr, tpr, _ = roc_curve(y_true[:, i], y_score[:, i])
             roc_auc = auc(fpr, tpr)
-            plt.plot(fpr, tpr, lw=2, label=f'Class {i} (AUC={roc_auc:.2f})')
+            #plt.plot(fpr, tpr, lw=2, label=f'Class {i} (AUC={roc_auc:.2f})')
 
         fpr_micro, tpr_micro, _ = roc_curve(y_true.ravel(), y_score.ravel())
         roc_auc_micro = auc(fpr_micro, tpr_micro)
-        plt.plot(fpr_micro, tpr_micro, linestyle='--', color='black', label=f'Micro-average (AUC={roc_auc_micro:.2f})')
+        #plt.plot(fpr_micro, tpr_micro, linestyle='--', color='black', label=f'Micro-average (AUC={roc_auc_micro:.2f})')
 
-        plt.xlabel('False Positive Rate')
-        plt.ylabel('True Positive Rate')
-        plt.title('ROC Curve (Multi-class)')
-        plt.legend()
-        plt.grid(True)
+        #plt.xlabel('False Positive Rate')
+        #plt.ylabel('True Positive Rate')
+        #plt.title('ROC Curve (Multi-class)')
+        #plt.legend()
+        #plt.grid(True)
 
-    plt.savefig(save_path, dpi=300, bbox_inches='tight')
-    plt.close()
-    print(f"ROC curve saved to {save_path}")  
+    #plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    #plt.close()
+    #print(f"ROC curve saved to {save_path}")  
     
 def pad_to_square(image, fill=0):
     w, h = image.size

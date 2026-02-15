@@ -22,8 +22,8 @@ from sklearn.utils import resample
 base_dir = "./../weights/"
 
 filename = "final_detailed_predictions.csv"
-OUTPUT_PREDICTIONS_FILE = "./dataset/ai_ensemble_predictions.csv" # New output file
-RATER_A_ORIGINAL_FILE = "./dataset/rater_A.csv" 
+OUTPUT_PREDICTIONS_FILE = "./../data/ai_ensemble_predictions.csv" # New output file
+RATER_A_ORIGINAL_FILE = "./../data/rater_A.csv" 
 par_threshold = 10
 weights_folder = "MIL_crop_fold{}_0.05_binary_vit_small_patch14_dinov2.lvd142m_K2_LabelSmoothing_0.001_b32_sched"
 # weights_folder = "MIL_crop_par"+str(par_threshold)+"_fold{}_0.05_binary_vit_small_patch14_dinov2.lvd142m_K2_LabelSmoothing_0.001_b32_sched"

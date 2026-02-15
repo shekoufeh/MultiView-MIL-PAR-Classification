@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 
 
+
 import os
 import sys
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from scipy.stats import pearsonr
 from sklearn.metrics import f1_score, cohen_kappa_score, confusion_matrix, classification_report
 
@@ -119,13 +120,13 @@ print(f" Main comparison data saved to: {OUTPUT_FILE_FULL}")
 # =============================================================================
 
 # Scatter: Main Comparison (Retest vs B)
-plt.figure(figsize=(6, 6))
-plt.scatter(par_A, par_B, alpha=0.6, label='Data Points')
-plt.plot([0, 20], [0, 20], 'k--', label='Perfect Agreement')
-plt.xlabel("Rater A (Retest)")
-plt.ylabel("Rater B")
-plt.title("Main: Rater A (Retest) vs Rater B")
-plt.legend()
-plt.grid(True)
-plt.savefig("./../data/scatter_main_retest_vs_B.png")
+# plt.figure(figsize=(6, 6))
+# plt.scatter(par_A, par_B, alpha=0.6, label='Data Points')
+# plt.plot([0, 20], [0, 20], 'k--', label='Perfect Agreement')
+# plt.xlabel("Rater A (Retest)")
+# plt.ylabel("Rater B")
+# plt.title("Main: Rater A (Retest) vs Rater B")
+# plt.legend()
+# plt.grid(True)
+# plt.savefig("./../data/scatter_main_retest_vs_B.png")
 print("\nProcessing Complete.")

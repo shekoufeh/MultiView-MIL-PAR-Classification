@@ -66,15 +66,6 @@ python inter_rater_reliability.py
 ## Data Format and Privacy
 Due to patient privacy, the full dataset used in this study cannot be publicly released. To facilitate reproduction of the pipeline, we provide a sample directory structure and file formats used for this project. In the annotation csv files, classes 0 and 1 correspond to PAR <= 10 and class 2 corresponds to PAR > 10. See "data" folder.
 
-%## Publication and Citation
-%The paper related to this work is currently under peer review. If you use our software as part of a scientific project, please cite the corresponding publication:
-%```bibtex
-%@article{gorgizadeh2026foundation,
-%  title={Automated Classification of Orthodontic Treatment Need Based on PAR Estimated from Intraoral Photographs: A Multi-View Deep Learning Framework Benchmarked Against %Human Inter- and Intra-Rater Reliability},
-%  author={Shekoufeh Gorgi Zadeh, Ben Bausch, Jorge Goncalves, Katarzyna Rogowska, and Jean-Philippe Becker},
-%  journal={MDPI Dentistry Journal},
-%  year={2026}
-%}
 ```
 ## Author
 [Shekoufeh Gorgi Zadeh](https://github.com/shekoufeh)

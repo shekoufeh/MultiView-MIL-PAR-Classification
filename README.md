@@ -1,7 +1,5 @@
-# Foundation-Model-Guided Multi-View MIL for Automated Orthodontic Assessment
+# Classification of Orthodontic Treatment Need Based on PAR Estimated from Intraoral Photographs
 
-This repository contains the PyTorch implementation for the paper:  
-**"Foundation-Model-Guided Multi-View Multiple Instance Learning for Automated Orthodontic Assessment"** 
 
 The framework introduces a robust pipeline for automated orthodontic diagnostic assessment by leveraging large-scale Vision Foundation Models (DINOv2/v3) and a Multi-View Multiple Instance Learning (MIL) architecture to handle disparate clinical perspectives (Frontal, Lateral, and Occlusal).
 
